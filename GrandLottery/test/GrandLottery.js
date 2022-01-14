@@ -20,6 +20,14 @@ describe("GrandLottery Contract", function () {
   
     });
 
+    it ("Should Reject Deployment if token amount is not satisfy", async function (){
+      const [addr12] = await ethers.getSigners();
+      GrandLottery = await ethers.getContractFactory("GrandLottery");
+      await expect(GrandLottery.deploy({
+        value: ethers.utils.parseEther("0.00000000000001"),})).to.be.revertedWith("Please Deploy with atleast 100 Billon Token");
+      //await hardhatGrandLottery.deployed();
+    })
+
   it("Should add Multiple People", async function () {
 
     await hardhatGrandLottery.connect(owner).setMaxPlayers(10);
