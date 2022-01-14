@@ -27,7 +27,7 @@ contract GrandLottery {
     uint number;
 
     constructor() payable {
-        require(msg.value >= 500000000000, "Please Deploy with atleast 100 Billon Token");
+        require(msg.value >= 100000000000, "Please Deploy with atleast 100 Billon Token");
         manager = msg.sender;
     }
 
