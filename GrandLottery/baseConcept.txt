@@ -1,0 +1,12 @@
+Lottery take players
+players enter 5 number as the will between 1-100;
+then contract Create 5 number;
+then compare user's number with contracts number;
+and give prize
+contract balance 100billion
+max player 100;
+5% - 5 ;
+4% - 4;
+3% - 3;
+2% - 2;
+1% - 1;
