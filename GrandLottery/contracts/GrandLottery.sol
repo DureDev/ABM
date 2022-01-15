@@ -8,20 +8,20 @@ contract GrandLottery {
         
     struct player{
         address pAddr;
-        uint number1;
-        uint number2;
-        uint number3;
-        uint number4;
-        uint number5;
+        uint16 number1;
+        uint16 number2;
+        uint16 number3;
+        uint16 number4;
+        uint16 number5;
     }
     player[] public players;
 
     struct winner {
         address wAddr;
-        uint correctGuesses;
+        uint8 correctGuesses;
         uint winAmount;
     }
-    winner[] public winners; // it should be internal
+    winner[] winners; 
 
     //temprary variables
     uint number;
