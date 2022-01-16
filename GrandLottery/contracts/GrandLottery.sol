@@ -58,32 +58,42 @@ contract GrandLottery {
         randNumbers[4] = (number/100000000) % 100;
 
         for (uint i ; i < maxPlayers ; i++){
-            uint correct = 0;
+            uint8 correct = 0;
+            bool finding1 = true;
+            bool finding2 = true;
+            bool finding3 = true;
+            bool finding4 = true;
+            bool finding5 = true;
 
             for ( uint j ; j < 5 ; j++){
                 
-                if ( players[i].number1 == randNumbers[j]){
+                if ( players[i].number1 == randNumbers[j] && finding1){
                     correct++;
+                    finding1 = false;
                     continue;
                 }
 
-                if ( players[i].number2 == randNumbers[j]){
+                if ( players[i].number2 == randNumbers[j]) && finding2{
                     correct++;
+                    finding2 = false;
                     continue;
                 }
 
-                if ( players[i].number3 == randNumbers[j]){
+                if ( players[i].number3 == randNumbers[j] && finding3){
                     correct++;
+                    finding3 = false;
                     continue;
                 }
 
-                if ( players[i].number4 == randNumbers[j]){
+                if ( players[i].number4 == randNumbers[j] && finding4){
                     correct++;
+                    finding4 = false;
                     continue;
                 }
 
-                if ( players[i].number5 == randNumbers[j]){
+                if ( players[i].number5 == randNumbers[j] && finding5){
                     correct++;
+                    finding5 = false;
                     continue;
                 }
             }
