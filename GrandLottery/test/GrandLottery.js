@@ -107,10 +107,15 @@ describe("GrandLottery Contract", function () {
 });
 /*
 
-
-  it("Should add Multiple People", async function () {
-    const [owner] = await ethers.getSigners();
-    const GrandLottery = await ethers.getContractFactory("GrandLottery");
-    expect(await GrandLottery.deploy()).to.be.revertWith("Please Deploy with atleast 100 Billon Token");
-    await hardhatGrandLottery.deployed();
+  function a() {
+    a = Math.floor((Math.random() * 100) + 1);
+    b = Math.floor((Math.random() * 100) + 1);
+    c = Math.floor((Math.random() * 100) + 1);
+    d = Math.floor((Math.random() * 100) + 1);
+    e = Math.floor((Math.random() * 100) + 1);
+    const f = {1, a, b, c, d, e};
+    return f;
+}
+  
+  
   }); */

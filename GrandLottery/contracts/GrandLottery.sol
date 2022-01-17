@@ -8,26 +8,26 @@ contract GrandLottery {
         
     struct player{
         address pAddr;
-        uint number1;
-        uint number2;
-        uint number3;
-        uint number4;
-        uint number5;
+        uint16 number1;
+        uint16 number2;
+        uint16 number3;
+        uint16 number4;
+        uint16 number5;
     }
     player[] public players;
 
     struct winner {
         address wAddr;
-        uint correctGuesses;
+        uint8 correctGuesses;
         uint winAmount;
     }
-    winner[] public winners; // it should be internal
+    winner[] winners; 
 
     //temprary variables
     uint number;
 
     constructor() payable {
-        require(msg.value >= 500000000000, "Please Deploy with atleast 100 Billon Token");
+        require(msg.value >= 100000000000, "Please Deploy with atleast 100 Billon Token");
         manager = msg.sender;
     }
 
@@ -41,7 +41,7 @@ contract GrandLottery {
        return uint(keccak256(abi.encodePacked(block.difficulty, block.timestamp))) % 10000000000;
     }
 
-    function buyTicket(uint _number1, uint _number2, uint _number3, uint _number4, uint _number5) public payable{
+    function buyTicket(uint16 _number1, uint16 _number2, uint16 _number3, uint16 _number4, uint16 _number5) public payable{
         require(players.length < maxPlayers, "Max players are allotted");
         require(msg.value == lotteryTicket, "Lottery Price is not equal");
         players.push(player(msg.sender, _number1, _number2, _number3, _number4, _number5));
@@ -58,32 +58,42 @@ contract GrandLottery {
         randNumbers[4] = (number/100000000) % 100;
 
         for (uint i ; i < maxPlayers ; i++){
-            uint correct = 0;
+            uint8 correct = 0;
+            bool finding1 = true;
+            bool finding2 = true;
+            bool finding3 = true;
+            bool finding4 = true;
+            bool finding5 = true;
 
             for ( uint j ; j < 5 ; j++){
                 
-                if ( players[i].number1 == randNumbers[j]){
+                if ( players[i].number1 == randNumbers[j] && finding1){
                     correct++;
+                    finding1 = false;
                     continue;
                 }
 
-                if ( players[i].number2 == randNumbers[j]){
+                if ( players[i].number2 == randNumbers[j]) && finding2{
                     correct++;
+                    finding2 = false;
                     continue;
                 }
 
-                if ( players[i].number3 == randNumbers[j]){
+                if ( players[i].number3 == randNumbers[j] && finding3){
                     correct++;
+                    finding3 = false;
                     continue;
                 }
 
-                if ( players[i].number4 == randNumbers[j]){
+                if ( players[i].number4 == randNumbers[j] && finding4){
                     correct++;
+                    finding4 = false;
                     continue;
                 }
 
-                if ( players[i].number5 == randNumbers[j]){
+                if ( players[i].number5 == randNumbers[j] && finding5){
                     correct++;
+                    finding5 = false;
                     continue;
                 }
             }
