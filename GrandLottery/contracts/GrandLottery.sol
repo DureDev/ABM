@@ -41,7 +41,7 @@ contract GrandLottery {
        return uint(keccak256(abi.encodePacked(block.difficulty, block.timestamp))) % 10000000000;
     }
 
-    function buyTicket(uint _number1, uint _number2, uint _number3, uint _number4, uint _number5) public payable{
+    function buyTicket(uint16 _number1, uint16 _number2, uint16 _number3, uint16 _number4, uint16 _number5) public payable{
         require(players.length < maxPlayers, "Max players are allotted");
         require(msg.value == lotteryTicket, "Lottery Price is not equal");
         players.push(player(msg.sender, _number1, _number2, _number3, _number4, _number5));
