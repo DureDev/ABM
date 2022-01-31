@@ -216,19 +216,18 @@ contract Reflectionary {
          return rate;
     }
 
-    function getSupply() internal view returns (uint, uint, uint){
+    function getSupply() internal view returns (uint, uint){
         uint rSupply = rTotal;
         uint tSupply = tTotal;
-        uint a;
-
+        
         for(uint i = 0 ; i < excluded.length ; i++){
-            if ( rOwned[excluded[i]] > rSupply || tOwned[excluded[i]] > tSupply ) return (rTotal, tTotal, a=1);
+            if ( rOwned[excluded[i]] > rSupply || tOwned[excluded[i]] > tSupply ) return (rTotal, tTotal);
             rSupply -= rOwned[excluded[i]];
             tSupply -= tOwned[excluded[i]];
         }
 
-        if(rSupply < rTotal/tTotal) return (rTotal, tTotal, a=2);
-        return (rSupply, tSupply, a=0);
+        if(rSupply < rTotal/tTotal) return (rTotal, tTotal);
+        return (rSupply, tSupply);
     }
     
 }
